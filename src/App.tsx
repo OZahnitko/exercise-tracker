@@ -15,7 +15,9 @@ const App = () => {
 
   /* Check if exercises exist is local storage */
 
-  const checkLocalStorage = () => {};
+  const checkLocalStorage = () => {
+    return "tes";
+  };
 
   useEffect(() => {
     const fn = async () => {
