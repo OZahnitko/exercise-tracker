@@ -17,9 +17,13 @@
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
+  "devDependencies": {
+    "serve": "^12.0.1"
+  },
   "scripts": {
     "start": "REACT_APP_ENVIRONMENT=development react-scripts start",
     "build": "REACT_APP_ENVIRONMENT=production react-scripts build",
+    "build:run": "yarn build && yarn serve -s dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
