@@ -1,51 +1,48 @@
-import { Button, TextField } from "@material-ui/core";
-import localforage from "localforage";
-import { useState } from "react";
+import { TextField } from "@material-ui/core";
+import { useEffect, useState } from "react";
 
-import { RootWrapper } from "./Styles";
+import exerciseData from "./data/exercises.json";
+import { RootWrapper, TextFieldWrapper } from "./Styles";
+import { fetchExercises, storeExercises } from "./utility";
+
+export interface Exercise {
+  name: string;
+}
 
 const App = () => {
   const [exercises, setExercises] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  /* Check if exercises exist is local storage */
+
+  const checkLocalStorage = () => {};
+
+  useEffect(() => {
+    const fn = async () => {
+      storeExercises(exerciseData.exercises.map(({ name }: Exercise) => name));
+    };
+    fn();
+    checkLocalStorage();
+    setLoading(() => false);
+  }, []);
+
+  useEffect(() => {
+    const fn = async () => {
+      const allExercises = await fetchExercises();
+      setExercises(() => allExercises!);
+    };
+    if (!loading) {
+      fn();
+    }
+  }, [loading]);
 
   return (
     <RootWrapper>
       <h1>Hello from the other side.</h1>
-      <Button
-        color="secondary"
-        onClick={async () => {
-          try {
-            await localforage.setItem("exercises", [
-              "dead lift",
-              "bench press",
-              "squat",
-            ]);
-          } catch (err) {
-            console.log(err);
-          }
-        }}
-        variant="contained"
-      >
-        SAVE in local forage
-      </Button>
-
-      <Button
-        color="primary"
-        onClick={async () => {
-          try {
-            const res: string[] | null = await localforage.getItem("exercises");
-            setExercises(() => res!);
-          } catch (err) {
-            console.log(err);
-          }
-        }}
-        variant="contained"
-      >
-        GET IT OUT OF THERE
-      </Button>
-      <div style={{ padding: "20px" }}>
-        <TextField fullWidth multiline variant="outlined" />
-      </div>
-      <pre>{JSON.stringify({ exercises }, null, 2)}</pre>
+      <TextFieldWrapper>
+        <TextField fullWidth multiline variant="outlined" minRows={10} />
+      </TextFieldWrapper>
+      <pre>{JSON.stringify({ exercises, loading }, null, 2)}</pre>
     </RootWrapper>
   );
 };

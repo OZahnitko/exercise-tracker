@@ -5,3 +5,7 @@ export const RootWrapper = styled.div`
 
   overflow: hidden auto;
 `;
+
+export const TextFieldWrapper = styled.div`
+  padding: 0.5rem;
+`;
