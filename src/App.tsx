@@ -2,13 +2,16 @@ import { Button, TextField } from "@material-ui/core";
 import localforage from "localforage";
 import { useState } from "react";
 
+import { RootWrapper } from "./Styles";
+
 const App = () => {
   const [exercises, setExercises] = useState<string[]>([]);
 
   return (
-    <div className="App">
+    <RootWrapper>
       <h1>Hello from the other side.</h1>
       <Button
+        color="secondary"
         onClick={async () => {
           try {
             await localforage.setItem("exercises", [
@@ -20,11 +23,13 @@ const App = () => {
             console.log(err);
           }
         }}
+        variant="contained"
       >
         SAVE in local forage
       </Button>
 
       <Button
+        color="primary"
         onClick={async () => {
           try {
             const res: string[] | null = await localforage.getItem("exercises");
@@ -33,6 +38,7 @@ const App = () => {
             console.log(err);
           }
         }}
+        variant="contained"
       >
         GET IT OUT OF THERE
       </Button>
@@ -40,7 +46,7 @@ const App = () => {
         <TextField fullWidth multiline variant="outlined" />
       </div>
       <pre>{JSON.stringify({ exercises }, null, 2)}</pre>
-    </div>
+    </RootWrapper>
   );
 };
 

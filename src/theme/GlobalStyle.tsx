@@ -8,10 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-      border: 2px solid red;
-  }
-
   html,
   body,
   #root {
@@ -22,9 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     min-height: 100%;
     min-width: 100%;
-
-    overflow: hidden;
-
+    
     padding: 0;
 
     width: 100%;
