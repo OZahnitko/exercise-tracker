@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const CalendarWrapper = styled.div`
+interface CalendarWrapperProps {
+  showCalendar: boolean;
+}
+
+export const CalendarWrapper = styled.div<CalendarWrapperProps>`
   background: white;
 
   display: flex;
@@ -9,7 +13,7 @@ export const CalendarWrapper = styled.div`
 
   position: absolute;
 
-  top: ${(props) => (props.hidden ? -100 : 0)}px;
+  top: ${(props) => (props.showCalendar ? -100 : 0)}px;
   transition: top 0.25s linear;
 
   width: 100%;

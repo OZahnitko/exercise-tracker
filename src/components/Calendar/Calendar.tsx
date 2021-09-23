@@ -1,5 +1,6 @@
 import LuxonUtils from "@date-io/luxon";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { useRef } from "react";
 
 import {
   getSelectedDate,
@@ -16,8 +17,10 @@ const Calendar = () => {
   const selectedDate = useAppSelector(getSelectedDate);
   const showCalendar = useAppSelector(getShowCalendar);
 
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
   return (
-    <CalendarWrapper hidden={!showCalendar}>
+    <CalendarWrapper showCalendar={!showCalendar} ref={wrapperRef}>
       <MuiPickersUtilsProvider utils={LuxonUtils}>
         <DatePicker
           autoOk
