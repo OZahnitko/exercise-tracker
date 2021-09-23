@@ -4,8 +4,15 @@ import { Button, TextField } from "@material-ui/core";
 import { DateTime } from "luxon";
 import { useEffect } from "react";
 
-import { getCurrentDate, getSelectedDate, setSelectedDate } from "./appSlice";
-import { useAppSelector, useAppDispatch } from "./store";
+import { Exercises } from "./components";
+import {
+  getCurrentDate,
+  getSelectedDate,
+  setSelectedDate,
+  setInitializingState,
+  useAppSelector,
+  useAppDispatch,
+} from "./store";
 import { RootWrapper, TextFieldWrapper } from "./Styles";
 import { checkLocalStorage } from "./utility";
 
@@ -16,12 +23,13 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   const checkLocal = async () => {
+    dispatch(setInitializingState(true));
     try {
       await checkLocalStorage();
     } catch (err) {
-      console.log("There was an error");
       console.log(err);
     }
+    dispatch(setInitializingState(false));
   };
 
   useEffect(() => {
@@ -56,6 +64,7 @@ const App = () => {
         </div>
       </MuiPickersUtilsProvider>
       <pre>{JSON.stringify({ currentDate, selectedDate }, null, 2)}</pre>
+      <Exercises />
     </RootWrapper>
   );
 };

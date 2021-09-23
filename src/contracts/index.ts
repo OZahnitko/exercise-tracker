@@ -9,5 +9,10 @@ export interface Data {
 
 export interface AppState {
   currentDate: string;
+  initializing: boolean;
   selectedDate: string | undefined;
+}
+
+export interface ExercisesState {
+  exercises: Exercise[];
 }

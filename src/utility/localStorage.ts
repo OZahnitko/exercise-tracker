@@ -1,7 +1,7 @@
 import localforage from "localforage";
 import { DateTime } from "luxon";
 
-import { Data } from "../contracts";
+import { Data, Exercise } from "../contracts";
 import data from "../data/data.json";
 
 export const checkLocalStorage = async () => {
@@ -15,7 +15,11 @@ export const checkLocalStorage = async () => {
       DateTime.fromISO(localData.lastUpdatedOn) <
       DateTime.fromISO(data.lastUpdatedOn)
     ) {
-      await storeData(data);
+      await storeData({
+        ...localData,
+        lastUpdatedOn: data.lastUpdatedOn,
+        exercises: data.exercises,
+      });
     }
   }
 };
