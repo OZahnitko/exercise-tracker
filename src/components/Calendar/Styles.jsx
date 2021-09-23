@@ -9,7 +9,7 @@ export const CalendarWrapper = styled.div`
 
   position: absolute;
 
-  top: ${(props) => (props.hidden ? -100 : 0)}%;
+  top: ${(props) => (props.hidden ? -100 : 0)}px;
   transition: top 0.25s linear;
 
   width: 100%;
