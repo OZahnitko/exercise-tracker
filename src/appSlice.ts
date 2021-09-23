@@ -5,8 +5,8 @@ import { AppState } from "./contracts";
 import { RootState } from "./store";
 
 const initialState: AppState = {
-  currentDate: DateTime.now().toISODate(),
-  selectedDate: undefined,
+  currentDate: DateTime.now().toISO(),
+  selectedDate: DateTime.now().toISO(),
 };
 
 export const appSlice = createSlice({

@@ -1,11 +1,9 @@
-import { DateTime } from "luxon";
-
 export interface Exercise {
   name: string;
 }
 
 export interface Data {
-  lastUpdatedOn: DateTime;
+  lastUpdatedOn: string;
   exercises: Exercise[];
 }
 
