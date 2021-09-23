@@ -5,19 +5,15 @@ interface CalendarWrapperProps {
 }
 
 export const CalendarWrapper = styled.div<CalendarWrapperProps>`
-  background: white;
+  box-shadow: ${({ theme }) => theme.shadows.calendarShadow};
 
   display: flex;
-
-  justify-content: center;
 
   position: absolute;
 
   top: ${(props) => (props.showCalendar ? -100 : 0)}%;
   transform: translateZ(0);
-  transition: top ${(props) => props.theme.times.calendarTransition}s linear;
-
-  width: 100%;
+  transition: top ${({ theme }) => theme.times.calendarTransition}s linear;
 
   // Experimenting with hardware acceleration
 
