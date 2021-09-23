@@ -1,0 +1,9 @@
+{
+  "exercises": [
+    { "name": "Bench Press" },
+    { "name": "Dead Lift" },
+    { "name": "Shoulder Press" },
+    { "name": "Squat" }
+  ],
+  "lastUpdateDate": "2021-09-22"
+}

@@ -1,48 +1,46 @@
-import { TextField } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import LuxonUtils from "@date-io/luxon";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { Button, TextField } from "@material-ui/core";
+import { DateTime } from "luxon";
 
-import exerciseData from "./data/exercises.json";
+import { getCurrentDate, getSelectedDate, setSelectedDate } from "./appSlice";
+import { useAppSelector, useAppDispatch } from "./store";
 import { RootWrapper, TextFieldWrapper } from "./Styles";
-import { fetchExercises, storeExercises } from "./utility";
-
-export interface Exercise {
-  name: string;
-}
 
 const App = () => {
-  const [exercises, setExercises] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const currentDate = useAppSelector(getCurrentDate);
+  const selectedDate = useAppSelector(getSelectedDate);
 
-  /* Check if exercises exist is local storage */
-
-  const checkLocalStorage = () => {};
-
-  useEffect(() => {
-    const fn = async () => {
-      storeExercises(exerciseData.exercises.map(({ name }: Exercise) => name));
-    };
-    fn();
-    checkLocalStorage();
-    setLoading(() => false);
-  }, []);
-
-  useEffect(() => {
-    const fn = async () => {
-      const allExercises = await fetchExercises();
-      setExercises(() => allExercises!);
-    };
-    if (!loading) {
-      fn();
-    }
-  }, [loading]);
+  const dispatch = useAppDispatch();
 
   return (
     <RootWrapper>
-      <h1>Hello from the other side.</h1>
       <TextFieldWrapper>
         <TextField fullWidth multiline variant="outlined" minRows={10} />
       </TextFieldWrapper>
-      <pre>{JSON.stringify({ exercises, loading }, null, 2)}</pre>
+      <Button
+        color="primary"
+        onClick={() => {
+          dispatch(setSelectedDate(DateTime.now().toISODate()));
+        }}
+        variant="contained"
+      >
+        Set Selected Date to Today
+      </Button>
+
+      <MuiPickersUtilsProvider utils={LuxonUtils}>
+        <div style={{ border: "2px solid red" }}>
+          <DatePicker
+            autoOk
+            orientation="portrait"
+            variant="static"
+            openTo="date"
+            value={selectedDate}
+            onChange={(date) => dispatch(setSelectedDate(date!.toISODate()))}
+          />
+        </div>
+      </MuiPickersUtilsProvider>
+      <pre>{JSON.stringify({ currentDate, selectedDate }, null, 2)}</pre>
     </RootWrapper>
   );
 };
