@@ -16,7 +16,6 @@ const Exercises = () => {
 
   const getData = async () => {
     const exerciseData = await fetchData();
-    console.log(exerciseData.exercises);
     dispatch(setExercises(exerciseData.exercises));
   };
 
@@ -31,7 +30,7 @@ const Exercises = () => {
       <h1>Exercises</h1>
       <pre>
         {JSON.stringify(
-          { exerciseList: exerciseList.exercises, initializingState },
+          { exerciseList: exerciseList, initializingState },
           null,
           2
         )}

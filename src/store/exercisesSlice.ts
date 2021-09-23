@@ -20,6 +20,7 @@ export const exercisesSlice = createSlice({
 
 export const { setExercises } = exercisesSlice.actions;
 
-export const getExercises = ({ exercises }: RootState) => exercises;
+export const getExercises = ({ exercises: { exercises } }: RootState) =>
+  exercises;
 
 export default exercisesSlice.reducer;

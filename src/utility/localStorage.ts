@@ -1,7 +1,7 @@
 import localforage from "localforage";
 import { DateTime } from "luxon";
 
-import { Data, Exercise } from "../contracts";
+import { Data } from "../contracts";
 import data from "../data/data.json";
 
 export const checkLocalStorage = async () => {
