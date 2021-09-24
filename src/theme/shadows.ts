@@ -1,1 +1,1 @@
-export const calendarShadow = "0 8px 16px 0 rgba(0, 0, 0, 0.2)";
+export const mainScreenSectionShadow = "0 8px 50px 5px rgba(0, 0, 0, 0.2)";

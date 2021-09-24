@@ -5,8 +5,6 @@ interface CalendarWrapperProps {
 }
 
 export const CalendarWrapper = styled.div<CalendarWrapperProps>`
-  box-shadow: ${({ theme }) => theme.shadows.calendarShadow};
-
   display: flex;
 
   position: absolute;

@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
+export const InnerWrapper = styled.div`
+  overflow: hidden auto;
+
+  height: 100%;
+`;
+
 export const RootWrapper = styled.div`
   height: 100%;
-
-  overflow: hidden auto;
 
   position: relative;
 `;
