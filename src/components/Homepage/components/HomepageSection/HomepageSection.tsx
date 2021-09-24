@@ -18,13 +18,18 @@ const HomepageSection: FC<HomepageSectionProps> = ({ children, large }) => {
 
   const homepageSectionRef = useRef<HTMLDivElement>(null);
 
+  const handleSetSelectedHomepageSection = () => {
+    if (selectedHomepageSection !== homepageSectionRef.current) {
+      dispatch(setSelectedHomepageSection(homepageSectionRef.current!));
+    }
+  };
+
   return (
     <Wrapper
       isActive={selectedHomepageSection === homepageSectionRef.current}
       large={large}
-      onClick={() =>
-        dispatch(setSelectedHomepageSection(homepageSectionRef.current!))
-      }
+      onClick={handleSetSelectedHomepageSection}
+      onScroll={handleSetSelectedHomepageSection}
       ref={homepageSectionRef}
     >
       {children || "Hello from the other side"}
