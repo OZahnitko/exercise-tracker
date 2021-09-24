@@ -26,7 +26,10 @@ const HomepageSection: FC<HomepageSectionProps> = ({ children, large }) => {
 
   return (
     <Wrapper
-      isActive={selectedHomepageSection === homepageSectionRef.current}
+      isActive={
+        selectedHomepageSection !== null &&
+        selectedHomepageSection === homepageSectionRef.current
+      }
       large={large}
       onClick={handleSetSelectedHomepageSection}
       onScroll={handleSetSelectedHomepageSection}

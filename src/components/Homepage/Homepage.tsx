@@ -5,6 +5,30 @@ export const Homepage = () => {
   return (
     <Wrapper>
       <HomepageHeader />
+      <div>Content Section</div>
+      <HomepageSection large>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+        <h1>Fuck the police</h1>
+      </HomepageSection>
+      <HomepageSection />
       <HomepageSection />
       <HomepageSection large>
         <h1>Fuck the police</h1>
@@ -30,6 +54,7 @@ export const Homepage = () => {
       </HomepageSection>
       <HomepageSection />
       <HomepageSection />
+      <div>Footer</div>
     </Wrapper>
   );
 };
