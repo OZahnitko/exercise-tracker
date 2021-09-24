@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { OverflowDirection } from "./HomepageSection";
 
 interface WrapperProps {
-  isActive?: boolean;
+  isActive: boolean;
   large?: boolean;
+  overflowDirection?: OverflowDirection;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -19,7 +21,10 @@ export const Wrapper = styled.div<WrapperProps>`
 
   margin: ${({ theme }) => theme.sizes.homepageSectionMargin}px;
 
-  overflow: hidden auto;
+  overflow: ${(props) =>
+      props.overflowDirection === OverflowDirection.x ? "auto" : "hidden"}
+    ${(props) =>
+      props.overflowDirection === OverflowDirection.y ? "hidden" : "auto"};
 
   padding: ${({ theme }) => theme.sizes.homepageSectionPadding}px;
 

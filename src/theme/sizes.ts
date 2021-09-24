@@ -6,4 +6,4 @@ export const homepageHeaderMargins = "10px 20px";
 
 export const homepageSectionMargin = 20;
 
-export const homepageSectionPadding = 20;
+export const homepageSectionPadding = 10;

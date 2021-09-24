@@ -27,9 +27,12 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  h1 {
+  h1, h2 {
     margin: 0;
 
+    font-family: "Nunito", sans-serif;
+    font-weight: 900;
+    
     padding: 0;
   }
 `;

@@ -8,11 +8,21 @@ import {
 } from "../../../../store";
 import { Wrapper } from "./Styles";
 
-interface HomepageSectionProps {
-  large?: boolean;
+export enum OverflowDirection {
+  x,
+  y,
 }
 
-const HomepageSection: FC<HomepageSectionProps> = ({ children, large }) => {
+interface HomepageSectionProps {
+  large?: boolean;
+  overflowDirection?: OverflowDirection;
+}
+
+const HomepageSection: FC<HomepageSectionProps> = ({
+  children,
+  large,
+  overflowDirection = OverflowDirection.x,
+}) => {
   const dispatch = useAppDispatch();
   const selectedHomepageSection = useAppSelector(getSelectedHomepageSection);
 
@@ -33,6 +43,7 @@ const HomepageSection: FC<HomepageSectionProps> = ({ children, large }) => {
       large={large}
       onClick={handleSetSelectedHomepageSection}
       onScroll={handleSetSelectedHomepageSection}
+      overflowDirection={overflowDirection}
       ref={homepageSectionRef}
     >
       {children || "Hello from the other side"}

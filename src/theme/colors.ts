@@ -1,3 +1,5 @@
+export const activityTimeSummaryTextColor = "#B0B0B0";
+
 export const homepageSectionDefaultAlpha = 50;
 export const homepageSectionDefaultColor = "#DDF2FF";
 
