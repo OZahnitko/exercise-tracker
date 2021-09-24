@@ -2,6 +2,7 @@ import {
   AvatarWrapper,
   IconWrapper,
   OuterIconWrapper,
+  UserNameWrapper,
   Wrapper,
 } from "./Styles";
 
@@ -32,7 +33,7 @@ export const HomepageHeader = () => {
           </svg>
         </IconWrapper>
       </OuterIconWrapper>
-      <div>Hello, Sasha</div>
+      <UserNameWrapper>Hello, Sasha</UserNameWrapper>
       <AvatarWrapper>
         <h2>S</h2>
       </AvatarWrapper>

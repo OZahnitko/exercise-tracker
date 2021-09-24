@@ -6,16 +6,23 @@ interface WrapperProps {
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  background-color: #f1f3fa;
+  background-color: ${({ theme }) =>
+    theme.colors.alpha(
+      theme.colors.homepageSectionDefaultColor,
+      theme.colors.homepageSectionDefaultAlpha
+    )};
   border-radius: 15px;
   box-shadow: ${(props) =>
-    props.isActive && "0px 1px 50px 1px rgba(0, 0, 0, 0.15)"};
+    props.isActive && props.theme.shadows.homepageSectionActiveShadow};
 
-  ${(props) => props.large && `height: 400px; overflow: hidden auto;`}
+  ${(props) => props.large && `height: 400px;`}
 
-  margin-bottom: 25px;
+  margin: ${({ theme }) => theme.sizes.homepageSectionMargin}px;
 
-  padding: 25px;
+  overflow: hidden auto;
 
-  transition: all 0.25s linear;
+  padding: ${({ theme }) => theme.sizes.homepageSectionPadding}px;
+
+  transition: box-shadow
+    ${(props) => props.theme.times.homepageSectionBoxShadow}s linear;
 `;

@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
 
     height: 100%;

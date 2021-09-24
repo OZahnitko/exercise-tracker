@@ -31,10 +31,15 @@ export const OuterIconWrapper = styled.div`
   width: ${({ theme }) => theme.sizes.avatarSize}px;
 `;
 
+export const UserNameWrapper = styled.div`
+  font-weight: ${({ theme }) =>
+    theme.typography.homepageHeaderUsernameFontWeight};
+`;
+
 export const Wrapper = styled.div`
   align-items: center;
 
-  margin-bottom: 25px;
+  margin: ${({ theme }) => theme.sizes.homepageHeaderMargins};
 
   display: flex;
 

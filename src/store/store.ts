@@ -6,6 +6,8 @@ import uiReducer from "./uiSlice";
 
 export const store = configureStore({
   reducer: { app: appReducer, exercises: exercisesReducer, ui: uiReducer },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
 export type AppDispatch = typeof store.dispatch;
