@@ -1,12 +1,18 @@
 import { useEffect } from "react";
 
-import { Homepage } from "./components";
-import { setInitializingState, useAppDispatch } from "./store";
+import { Homepage, UserPanel } from "./components";
+import {
+  getShowUserPanel,
+  setInitializingState,
+  useAppDispatch,
+  useAppSelector,
+} from "./store";
 import { InnerWrapper, RootWrapper } from "./Styles";
 import { checkLocalStorage } from "./utility";
 
 const App = () => {
   const dispatch = useAppDispatch();
+  const showUserPanel = useAppSelector(getShowUserPanel);
 
   const checkLocal = async () => {
     dispatch(setInitializingState(true));
@@ -23,6 +29,7 @@ const App = () => {
   return (
     <RootWrapper>
       <InnerWrapper>
+        {showUserPanel && <UserPanel />}
         <Homepage />
       </InnerWrapper>
     </RootWrapper>

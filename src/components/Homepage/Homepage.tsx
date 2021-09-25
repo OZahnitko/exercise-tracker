@@ -4,7 +4,6 @@ import {
   HomepageTodaysActivity,
   HomepageWorkoutSelector,
 } from "./components";
-
 import { ContentSection, Wrapper } from "./Styles";
 
 export const Homepage = () => {

@@ -29,5 +29,5 @@ export const Wrapper = styled.div<WrapperProps>`
   padding: ${({ theme }) => theme.sizes.homepageSectionPadding}px;
 
   transition: box-shadow
-    ${(props) => props.theme.times.homepageSectionBoxShadow}s linear;
+    ${(props) => props.theme.times.homepageSectionBoxShadow}s ease-in-out;
 `;

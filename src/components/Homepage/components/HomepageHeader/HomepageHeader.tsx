@@ -1,3 +1,4 @@
+import { setShowUserPanel, useAppDispatch } from "../../../../store";
 import {
   AvatarWrapper,
   IconWrapper,
@@ -7,6 +8,8 @@ import {
 } from "./Styles";
 
 export const HomepageHeader = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <Wrapper>
       <OuterIconWrapper>
@@ -34,7 +37,11 @@ export const HomepageHeader = () => {
         </IconWrapper>
       </OuterIconWrapper>
       <UserNameWrapper>Hello, Sasha</UserNameWrapper>
-      <AvatarWrapper>
+      <AvatarWrapper
+        onClick={() => {
+          dispatch(setShowUserPanel(true));
+        }}
+      >
         <h2>S</h2>
       </AvatarWrapper>
     </Wrapper>

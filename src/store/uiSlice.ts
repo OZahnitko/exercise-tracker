@@ -2,13 +2,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
 
 interface CalendarState {
-  showCalendar: boolean;
   selectedHomepageSection: HTMLDivElement | null;
+  showCalendar: boolean;
+  showUserPanel: boolean;
 }
 
 const initialState: CalendarState = {
-  showCalendar: false,
   selectedHomepageSection: null,
+  showCalendar: false,
+  showUserPanel: false,
 };
 
 export const uiSlice = createSlice({
@@ -23,10 +25,15 @@ export const uiSlice = createSlice({
       ...state,
       showCalendar: payload,
     }),
+    setShowUserPanel: (state, { payload }: PayloadAction<boolean>) => ({
+      ...state,
+      showUserPanel: payload,
+    }),
   },
 });
 
-export const { setShowCalendar, setSelectedHomepageSection } = uiSlice.actions;
+export const { setSelectedHomepageSection, setShowUserPanel, setShowCalendar } =
+  uiSlice.actions;
 
 export const getSelectedHomepageSection = ({
   ui: { selectedHomepageSection },
@@ -34,5 +41,8 @@ export const getSelectedHomepageSection = ({
 
 export const getShowCalendar = ({ ui: { showCalendar } }: RootState) =>
   showCalendar;
+
+export const getShowUserPanel = ({ ui: { showUserPanel } }: RootState) =>
+  showUserPanel;
 
 export default uiSlice.reducer;
