@@ -6,6 +6,7 @@ import {
   setInitializingState,
   useAppDispatch,
   useAppSelector,
+  useOutsideClickListener,
 } from "./store";
 import { InnerWrapper, RootWrapper } from "./Styles";
 import { checkLocalStorage } from "./utility";
@@ -13,6 +14,8 @@ import { checkLocalStorage } from "./utility";
 const App = () => {
   const dispatch = useAppDispatch();
   const showUserPanel = useAppSelector(getShowUserPanel);
+
+  useOutsideClickListener();
 
   const checkLocal = async () => {
     dispatch(setInitializingState(true));

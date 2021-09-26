@@ -1,28 +1,33 @@
 import { useEffect, useRef } from "react";
 
+import { Wrapper } from "./Styles";
+
 import {
-  useOutsideClickListener,
-  useAppDispatch,
+  addObservedElement,
   setShowUserPanel,
+  useAppDispatch,
 } from "../../store";
 
 const UserPanel = () => {
   const dispatch = useAppDispatch();
 
-  const { addElement } = useOutsideClickListener();
-
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    const wrapper = wrapperRef.current!;
-
-    addElement(wrapper, () => dispatch(setShowUserPanel(false)));
-  }, []);
+    if (wrapperRef.current) {
+      dispatch(
+        addObservedElement({
+          element: wrapperRef.current!,
+          callback: () => dispatch(setShowUserPanel(false)),
+        })
+      );
+    }
+  }, [wrapperRef]);
 
   return (
-    <div ref={wrapperRef}>
+    <Wrapper ref={wrapperRef}>
       <h1>User Panel</h1>
-    </div>
+    </Wrapper>
   );
 };
 

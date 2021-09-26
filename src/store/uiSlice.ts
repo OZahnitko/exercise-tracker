@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
 
-interface CalendarState {
+interface UIState {
   selectedHomepageSection: HTMLDivElement | null;
   showCalendar: boolean;
   showUserPanel: boolean;
 }
 
-const initialState: CalendarState = {
+const initialState: UIState = {
   selectedHomepageSection: null,
   showCalendar: false,
   showUserPanel: false,

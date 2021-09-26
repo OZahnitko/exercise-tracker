@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const ContentSection = styled.div`
-  overflow: hidden auto;
-
   flex: 1;
+
+  overflow: hidden auto;
 `;
 
 export const Wrapper = styled.div`
