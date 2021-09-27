@@ -4,15 +4,19 @@ import { OverflowDirection } from "./HomepageSection";
 interface WrapperProps {
   isActive: boolean;
   large?: boolean;
+  noBackgroundColor?: boolean;
+  noPad?: boolean;
   overflowDirection?: OverflowDirection;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  background-color: ${({ theme }) =>
-    theme.colors.alpha(
-      theme.colors.homepageSectionDefaultColor,
-      theme.colors.homepageSectionDefaultAlpha
-    )};
+  background-color: ${({ noBackgroundColor, theme }) =>
+    noBackgroundColor
+      ? null
+      : theme.colors.alpha(
+          theme.colors.homepageSectionDefaultColor,
+          theme.colors.homepageSectionDefaultAlpha
+        )};
   border-radius: 15px;
   box-shadow: ${(props) =>
     props.isActive && props.theme.shadows.homepageSectionActiveShadow};
@@ -26,7 +30,8 @@ export const Wrapper = styled.div<WrapperProps>`
     ${(props) =>
       props.overflowDirection === OverflowDirection.y ? "hidden" : "auto"};
 
-  padding: ${({ theme }) => theme.sizes.homepageSectionPadding}px;
+  padding: ${({ noPad, theme }) =>
+    noPad ? 0 : theme.sizes.homepageSectionPadding}px;
 
   transition: box-shadow
     ${(props) => props.theme.times.homepageSectionBoxShadow}s ease-in-out;

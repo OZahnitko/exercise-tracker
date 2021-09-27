@@ -4,8 +4,10 @@ export const homepageFooterPadding = 10;
 
 export const homepageHeaderMargins = "10px 20px 0 20px";
 
+export const homepageSearchPadding = "20px 20px 0 20px";
+
 export const homepageSectionMargin = 20;
 
 export const homepageSectionPadding = 10;
 
-export const userPanelPadding = 10;
+export const userPanelPadding = 20;

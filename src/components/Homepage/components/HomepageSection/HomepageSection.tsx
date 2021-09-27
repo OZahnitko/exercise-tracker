@@ -15,12 +15,16 @@ export enum OverflowDirection {
 
 interface HomepageSectionProps {
   large?: boolean;
+  noBackgroundColor?: boolean;
+  noPad?: boolean;
   overflowDirection?: OverflowDirection;
 }
 
 const HomepageSection: FC<HomepageSectionProps> = ({
   children,
   large,
+  noBackgroundColor = false,
+  noPad = false,
   overflowDirection = OverflowDirection.x,
 }) => {
   const dispatch = useAppDispatch();
@@ -41,12 +45,14 @@ const HomepageSection: FC<HomepageSectionProps> = ({
         selectedHomepageSection === homepageSectionRef.current
       }
       large={large}
+      noBackgroundColor={noBackgroundColor}
+      noPad={noPad}
       onClick={handleSetSelectedHomepageSection}
       onScroll={handleSetSelectedHomepageSection}
       overflowDirection={overflowDirection}
       ref={homepageSectionRef}
     >
-      {children || "Hello from the other side"}
+      {children || "Section"}
     </Wrapper>
   );
 };

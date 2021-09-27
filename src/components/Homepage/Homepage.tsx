@@ -1,6 +1,7 @@
 import {
   HomepageFooter,
   HomepageHeader,
+  HomepageSearch,
   HomepageTodaysActivity,
   HomepageWorkoutSelector,
 } from "./components";
@@ -11,6 +12,7 @@ export const Homepage = () => {
     <Wrapper>
       <HomepageHeader />
       <ContentSection>
+        <HomepageSearch />
         <HomepageTodaysActivity />
         <HomepageWorkoutSelector />
       </ContentSection>
