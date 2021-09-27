@@ -10,6 +10,7 @@ export interface Data {
 export interface AppState {
   currentDate: string;
   initializing: boolean;
+  searchString: string;
   selectedDate: string | undefined;
 }
 

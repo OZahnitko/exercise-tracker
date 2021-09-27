@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import type { AppDispatch, RootState } from ".";
@@ -12,14 +12,17 @@ export const useOutsideClickListener = () => {
   const dispatch = useAppDispatch();
   const observedHtmlElements = useAppSelector(getObservedElements);
 
-  const handleClick = (e: MouseEvent) => {
-    for (const element of observedHtmlElements) {
-      if (!e.composedPath().includes(element.element)) {
-        dispatch(removeObservedElement(element));
-        element.callback();
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      for (const element of observedHtmlElements) {
+        if (!e.composedPath().includes(element.element)) {
+          dispatch(removeObservedElement(element));
+          element.callback();
+        }
       }
-    }
-  };
+    },
+    [observedHtmlElements]
+  );
 
   useEffect(() => {
     window.addEventListener("click", handleClick);

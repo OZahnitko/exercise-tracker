@@ -7,6 +7,7 @@ import { RootState } from "./store";
 const initialState: AppState = {
   currentDate: DateTime.now().toISO(),
   initializing: true,
+  searchString: "",
   selectedDate: DateTime.now().toISO(),
 };
 
