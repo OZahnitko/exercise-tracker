@@ -1,20 +1,17 @@
 import { useEffect, useRef } from "react";
 
+import { ExercisePicker } from "./components";
 import {
-  getExercises,
   addObservedElement,
   setExercises,
   setShowCreateWorkoutPanel,
   useAppDispatch,
-  useAppSelector,
 } from "../../store";
 import { Wrapper } from "./Styles";
 import { fetchExercises } from "../../utility";
 
 const CreateWorkoutPanel = () => {
   const dispatch = useAppDispatch();
-
-  const exercises = useAppSelector(getExercises);
 
   const wrapperRef = useRef(null);
 
@@ -25,12 +22,6 @@ const CreateWorkoutPanel = () => {
   useEffect(() => {
     loadExercises();
   }, []);
-
-  useEffect(() => {
-    if (exercises) {
-      console.log(exercises);
-    }
-  }, [exercises]);
 
   useEffect(() => {
     if (wrapperRef.current) {
@@ -45,15 +36,9 @@ const CreateWorkoutPanel = () => {
 
   return (
     <Wrapper ref={wrapperRef}>
-      <h2>Create New Workout</h2>
-      <div>Pick from</div>
+      <h3>Create New Workout</h3>
+      <ExercisePicker />
       <div>picked</div>
-      <pre>{JSON.stringify({ exercises }, null, 2)}</pre>
-      {exercises.map((exercise) => (
-        <div key={exercise.name}>
-          <p>{exercise.name}</p>
-        </div>
-      ))}
     </Wrapper>
   );
 };
