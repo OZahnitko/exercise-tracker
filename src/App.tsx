@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
-import { Homepage, UserPanel } from "./components";
+import { CreateWorkoutPanel, Homepage, UserPanel } from "./components";
 import {
+  getShowCreateWorkoutPanel,
   getShowUserPanel,
   setInitializingState,
   useAppDispatch,
@@ -13,6 +14,7 @@ import { checkLocalStorage } from "./utility";
 
 const App = () => {
   const dispatch = useAppDispatch();
+  const showCreateWorkoutPanel = useAppSelector(getShowCreateWorkoutPanel);
   const showUserPanel = useAppSelector(getShowUserPanel);
 
   useOutsideClickListener();
@@ -30,12 +32,15 @@ const App = () => {
   }, []);
 
   return (
-    <RootWrapper>
-      <InnerWrapper>
-        {showUserPanel && <UserPanel />}
-        <Homepage />
-      </InnerWrapper>
-    </RootWrapper>
+    <>
+      <RootWrapper>
+        <InnerWrapper>
+          {showUserPanel && <UserPanel />}
+          {showCreateWorkoutPanel && <CreateWorkoutPanel />}
+          <Homepage />
+        </InnerWrapper>
+      </RootWrapper>
+    </>
   );
 };
 

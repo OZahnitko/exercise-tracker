@@ -4,12 +4,14 @@ import { RootState } from ".";
 interface UIState {
   selectedHomepageSection: HTMLDivElement | null;
   showCalendar: boolean;
+  showCreateWorkoutPanel: boolean;
   showUserPanel: boolean;
 }
 
 const initialState: UIState = {
   selectedHomepageSection: null,
   showCalendar: false,
+  showCreateWorkoutPanel: false,
   showUserPanel: false,
 };
 
@@ -25,6 +27,10 @@ export const uiSlice = createSlice({
       ...state,
       showCalendar: payload,
     }),
+    setShowCreateWorkoutPanel: (
+      state,
+      { payload }: PayloadAction<boolean>
+    ) => ({ ...state, showCreateWorkoutPanel: payload }),
     setShowUserPanel: (state, { payload }: PayloadAction<boolean>) => ({
       ...state,
       showUserPanel: payload,
@@ -32,8 +38,12 @@ export const uiSlice = createSlice({
   },
 });
 
-export const { setSelectedHomepageSection, setShowUserPanel, setShowCalendar } =
-  uiSlice.actions;
+export const {
+  setSelectedHomepageSection,
+  setShowCalendar,
+  setShowCreateWorkoutPanel,
+  setShowUserPanel,
+} = uiSlice.actions;
 
 export const getSelectedHomepageSection = ({
   ui: { selectedHomepageSection },
@@ -41,6 +51,10 @@ export const getSelectedHomepageSection = ({
 
 export const getShowCalendar = ({ ui: { showCalendar } }: RootState) =>
   showCalendar;
+
+export const getShowCreateWorkoutPanel = ({
+  ui: { showCreateWorkoutPanel },
+}: RootState) => showCreateWorkoutPanel;
 
 export const getShowUserPanel = ({ ui: { showUserPanel } }: RootState) =>
   showUserPanel;

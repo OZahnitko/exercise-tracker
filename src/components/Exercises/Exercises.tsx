@@ -16,7 +16,7 @@ const Exercises = () => {
 
   const getData = async () => {
     const exerciseData = await fetchData();
-    dispatch(setExercises(exerciseData.exercises));
+    dispatch(setExercises(exerciseData!.exercises));
   };
 
   useEffect(() => {

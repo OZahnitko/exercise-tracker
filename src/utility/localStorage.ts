@@ -1,7 +1,7 @@
 import localforage from "localforage";
 import { DateTime } from "luxon";
 
-import { Data } from "../contracts";
+import { Data, Exercise } from "../contracts";
 import data from "../data/data.json";
 
 export const checkLocalStorage = async () => {
@@ -29,3 +29,11 @@ export const storeData = async (data: Data) =>
 
 export const fetchData = async (): Promise<Data | null> =>
   await localforage.getItem("data");
+
+export const fetchExercises = async (): Promise<Exercise[]> => {
+  const data: { exercises: Exercise[] } | null = await localforage.getItem(
+    "data"
+  );
+
+  return data!.exercises;
+};

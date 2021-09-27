@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const InputWrapper = styled.div`
   position: relative;
+
+  z-index: -1;
 `;
 
 export const SearchInputIcon = styled.svg`
