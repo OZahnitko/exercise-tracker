@@ -15,7 +15,6 @@ const ExercisePicker = () => {
   const [selectedArea, setSelectedArea] = useState<string | undefined>(
     undefined
   );
-  const [selectedExercises, setSelectedExercises] = useState<string[]>([]);
 
   const dispatch = useAppDispatch();
   const exercises = useAppSelector(getExercises);
@@ -76,7 +75,10 @@ const ExercisePicker = () => {
           exercises
             .filter((exercise) => exercise.aoe.includes(selectedArea))
             .filter(
-              (exercise) => !selectedNewWorkoutExercises.includes(exercise)
+              (exercise) =>
+                !selectedNewWorkoutExercises
+                  .map((exercise) => exercise.name)
+                  .includes(exercise.name)
             )
             .map((exercise) => (
               <div
@@ -87,13 +89,6 @@ const ExercisePicker = () => {
               </div>
             ))}
       </div>
-      <pre>
-        {JSON.stringify(
-          { selectedExercises, selectedNewWorkoutExercises },
-          null,
-          2
-        )}
-      </pre>
     </Wrapper>
   );
 };

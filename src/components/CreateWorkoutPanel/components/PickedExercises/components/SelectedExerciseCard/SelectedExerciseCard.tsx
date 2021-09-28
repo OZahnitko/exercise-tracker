@@ -29,8 +29,8 @@ const SelectedExerciseCard: FC<SelectedExerciseCardProps> = ({
             height="24"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M2.3676 4.32549C3.90631 1.48581 8.21062 1.73506 11.2591 2.53158C13.6754 3.1629 14.1755 6.4681 16.2238 7.94585C18.862 9.84915 23.1096 9.15985 24.5675 12.1328C26.3633 15.7949 26.7541 20.955 24.0788 23.9642C21.4177 26.9576 16.7137 25.9316 12.8244 25.3419C9.86675 24.8935 6.85825 23.7024 5.21395 21.1042C3.8159 18.8952 5.76356 16.0891 5.32231 13.488C4.76315 10.1918 0.790703 7.23565 2.3676 4.32549Z"
               fill="#5B5B5B"
             />
@@ -450,48 +450,48 @@ const SelectedExerciseCard: FC<SelectedExerciseCardProps> = ({
               <rect width="28" height="28" fill="#F78D80" />
             </g>
           </g>
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <path
               d="M20.875 13.1552H7.125V14.9138H20.875V13.1552Z"
               fill="black"
               stroke="black"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
             />
             <path
               d="M20.875 7.12561H19.125V20.9433H20.875V7.12561Z"
               fill="black"
               stroke="black"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
             />
             <path
               d="M8.875 7.12561H7.125V20.9433H8.875V7.12561Z"
               fill="black"
               stroke="black"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
             />
             <path
               d="M23.875 9.1355H22.125V18.9335H23.875V9.1355Z"
               fill="black"
               stroke="black"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
             />
             <path
               d="M25.875 13.1552H24.125V14.9138H25.875V13.1552Z"
               fill="black"
               stroke="black"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
             />
             <path
               d="M5.875 9.1355H4.125V18.9335H5.875V9.1355Z"
               fill="black"
               stroke="black"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
             />
             <path
               d="M3.875 13.1552H2.125V14.9138H3.875V13.1552Z"
               fill="black"
               stroke="black"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
             />
           </g>
           <defs>
