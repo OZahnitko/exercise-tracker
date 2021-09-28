@@ -3,15 +3,20 @@ import { useEffect, useRef } from "react";
 import { ExercisePicker, PickedExercises } from "./components";
 import {
   addObservedElement,
+  getSelectedNewWorkoutExercises,
   setExercises,
   setShowCreateWorkoutPanel,
   useAppDispatch,
+  useAppSelector,
 } from "../../store";
 import { HeadingWrapper, Wrapper } from "./Styles";
 import { fetchExercises } from "../../utility";
 
 const CreateWorkoutPanel = () => {
   const dispatch = useAppDispatch();
+  const selectedNewWorkoutExercises = useAppSelector(
+    getSelectedNewWorkoutExercises
+  );
 
   const wrapperRef = useRef(null);
 
@@ -40,7 +45,7 @@ const CreateWorkoutPanel = () => {
         <h3>Create New Workout</h3>
       </HeadingWrapper>
       <ExercisePicker />
-      <PickedExercises />
+      {selectedNewWorkoutExercises.length ? <PickedExercises /> : null}
     </Wrapper>
   );
 };

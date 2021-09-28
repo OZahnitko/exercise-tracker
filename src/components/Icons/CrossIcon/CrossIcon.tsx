@@ -1,6 +1,13 @@
-const CrossIcon = () => {
+import { FC } from "react";
+
+interface CrossButtonProps {
+  onClick?: () => void;
+}
+
+const CrossIcon: FC<CrossButtonProps> = ({ onClick = () => {} }) => {
   return (
     <svg
+      onClick={onClick}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -10,9 +17,9 @@ const CrossIcon = () => {
       <path
         d="M6 18L18 6M6 6L18 18"
         stroke="#111827"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

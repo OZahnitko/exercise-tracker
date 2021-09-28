@@ -1,20 +1,34 @@
-const ChevronDownIcon = () => {
+import { FC } from "react";
+
+import { StyledSVG } from "./Styled";
+
+interface ChevronIconProps {
+  rotated: boolean;
+  onClick?: () => void;
+}
+
+const ChevronDownIcon: FC<ChevronIconProps> = ({
+  onClick = () => {},
+  rotated,
+}) => {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+    <StyledSVG
       fill="none"
+      height="24"
+      onClick={onClick}
+      rotated={rotated}
+      viewBox="0 0 24 24"
+      width="24"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M19 9L12 16L5 9"
         stroke="#111827"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
       />
-    </svg>
+    </StyledSVG>
   );
 };
 
