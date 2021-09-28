@@ -5,6 +5,7 @@ import { Exercise, ExercisesState } from "../contracts";
 
 const initialState: ExercisesState = {
   exercises: [],
+  selectedNewWorkoutExercises: [],
 };
 
 export const exercisesSlice = createSlice({
@@ -15,12 +16,21 @@ export const exercisesSlice = createSlice({
       ...state,
       exercises: payload,
     }),
+    setSelectedNewWorkoutExercises: (
+      state,
+      { payload }: PayloadAction<Exercise[]>
+    ) => ({ ...state, selectedNewWorkoutExercises: payload }),
   },
 });
 
-export const { setExercises } = exercisesSlice.actions;
+export const { setExercises, setSelectedNewWorkoutExercises } =
+  exercisesSlice.actions;
 
 export const getExercises = ({ exercises: { exercises } }: RootState) =>
   exercises;
+
+export const getSelectedNewWorkoutExercises = ({
+  exercises: { selectedNewWorkoutExercises },
+}: RootState) => selectedNewWorkoutExercises;
 
 export default exercisesSlice.reducer;

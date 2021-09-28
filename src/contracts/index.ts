@@ -17,4 +17,5 @@ export interface AppState {
 
 export interface ExercisesState {
   exercises: Exercise[];
+  selectedNewWorkoutExercises: Exercise[];
 }

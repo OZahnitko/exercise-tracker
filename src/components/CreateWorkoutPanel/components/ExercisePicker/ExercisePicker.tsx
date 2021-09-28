@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { getExercises, useAppSelector } from "../../../../store";
+import type { Exercise } from "../../../../contracts";
+import {
+  getExercises,
+  getSelectedNewWorkoutExercises,
+  setSelectedNewWorkoutExercises,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../store";
 import { Wrapper } from "./Styles";
 
 const ExercisePicker = () => {
@@ -10,16 +17,21 @@ const ExercisePicker = () => {
   );
   const [selectedExercises, setSelectedExercises] = useState<string[]>([]);
 
+  const dispatch = useAppDispatch();
   const exercises = useAppSelector(getExercises);
+  const selectedNewWorkoutExercises = useAppSelector(
+    getSelectedNewWorkoutExercises
+  );
 
-  const addSelectedExercise = (exercise: string) => {
-    setSelectedExercises((selectedExercises) => {
-      if (selectedExercises.includes(exercise)) {
-        return selectedExercises;
-      } else {
-        return [...selectedExercises, exercise];
-      }
-    });
+  const addSelectedExercise = (exercise: Exercise) => {
+    if (!selectedNewWorkoutExercises.includes(exercise)) {
+      dispatch(
+        setSelectedNewWorkoutExercises([
+          ...selectedNewWorkoutExercises,
+          exercise,
+        ])
+      );
+    }
   };
 
   useEffect(() => {
@@ -63,17 +75,25 @@ const ExercisePicker = () => {
         {selectedArea &&
           exercises
             .filter((exercise) => exercise.aoe.includes(selectedArea))
-            .filter((exercise) => !selectedExercises.includes(exercise.name))
+            .filter(
+              (exercise) => !selectedNewWorkoutExercises.includes(exercise)
+            )
             .map((exercise) => (
               <div
                 key={exercise.name}
-                onClick={() => addSelectedExercise(exercise.name)}
+                onClick={() => addSelectedExercise(exercise)}
               >
                 {exercise.name}
               </div>
             ))}
       </div>
-      <pre>{JSON.stringify({ selectedExercises }, null, 2)}</pre>
+      <pre>
+        {JSON.stringify(
+          { selectedExercises, selectedNewWorkoutExercises },
+          null,
+          2
+        )}
+      </pre>
     </Wrapper>
   );
 };
