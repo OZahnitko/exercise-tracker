@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const HeadingWrapper = styled.div`
   text-align: center;
-
-  margin-bottom: 20px;
 `;
 
 export const Wrapper = styled.div`
@@ -18,8 +16,6 @@ export const Wrapper = styled.div`
   position: absolute;
 
   overflow: hidden auto;
-
-  padding: 20px;
 
   width: 100%;
 
