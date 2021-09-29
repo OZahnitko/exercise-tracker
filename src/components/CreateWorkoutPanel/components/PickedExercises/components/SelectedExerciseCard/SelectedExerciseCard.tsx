@@ -64,10 +64,39 @@ const SelectedExerciseCard: FC<SelectedExerciseCardProps> = ({
         </IconWrapperAdmin>
       </HeadingWrapper>
       {expanded ? (
-        <div>
-          <div>Weight</div>
-          <div>Reps</div>
-          <div>Sets</div>
+        <div style={{ marginTop: "5px" }}>
+          <div
+            style={{
+              border: "1px solid #c4c4c4",
+              borderRadius: "5px",
+              fontSize: "12px",
+              padding: "10px",
+              marginBottom: "10px",
+            }}
+          >
+            Weight
+          </div>
+          <div
+            style={{
+              border: "1px solid #c4c4c4",
+              borderRadius: "5px",
+              fontSize: "12px",
+              padding: "10px",
+              marginBottom: "10px",
+            }}
+          >
+            Reps
+          </div>
+          <div
+            style={{
+              border: "1px solid #c4c4c4",
+              borderRadius: "5px",
+              fontSize: "12px",
+              padding: "10px",
+            }}
+          >
+            Sets
+          </div>
         </div>
       ) : null}
     </Wrapper>
