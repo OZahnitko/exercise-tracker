@@ -28,7 +28,7 @@ const SelectedExerciseCard: FC<SelectedExerciseCardProps> = ({
   exerciseName,
 }) => {
   const [expanded, setExpanded] = useState<boolean>(true);
-  const [selectionReady, setSelectionReady] = useState<boolean>(false);
+  const [selectionReady] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
   const selectedNewWorkoutExercises = useAppSelector(
