@@ -2,61 +2,36 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from ".";
 
 interface UIState {
-  selectedHomepageSection: HTMLDivElement | null;
-  showCalendar: boolean;
-  showCreateWorkoutPanel: boolean;
-  showUserPanel: boolean;
+  showBottomDrawer: boolean;
+  showSidebar: boolean;
 }
 
 const initialState: UIState = {
-  selectedHomepageSection: null,
-  showCalendar: false,
-  showCreateWorkoutPanel: false,
-  showUserPanel: false,
+  showBottomDrawer: false,
+  showSidebar: false,
 };
 
 export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    setSelectedHomepageSection: (
-      state,
-      { payload }: PayloadAction<HTMLDivElement>
-    ) => ({ ...state, selectedHomepageSection: payload }),
-    setShowCalendar: (state, { payload }: PayloadAction<boolean>) => ({
+    setShowBottomDrawer: (state, { payload }: PayloadAction<boolean>) => ({
       ...state,
-      showCalendar: payload,
+      showBottomDrawer: payload,
     }),
-    setShowCreateWorkoutPanel: (
-      state,
-      { payload }: PayloadAction<boolean>
-    ) => ({ ...state, showCreateWorkoutPanel: payload }),
-    setShowUserPanel: (state, { payload }: PayloadAction<boolean>) => ({
+    setShowSidebar: (state, { payload }: PayloadAction<boolean>) => ({
       ...state,
-      showUserPanel: payload,
+      showSidebar: payload,
     }),
   },
 });
 
-export const {
-  setSelectedHomepageSection,
-  setShowCalendar,
-  setShowCreateWorkoutPanel,
-  setShowUserPanel,
-} = uiSlice.actions;
+export const { setShowBottomDrawer, setShowSidebar } = uiSlice.actions;
 
-export const getSelectedHomepageSection = ({
-  ui: { selectedHomepageSection },
-}: RootState) => selectedHomepageSection;
+export const getShowBottomDrawer = ({ ui: { showBottomDrawer } }: RootState) =>
+  showBottomDrawer;
 
-export const getShowCalendar = ({ ui: { showCalendar } }: RootState) =>
-  showCalendar;
-
-export const getShowCreateWorkoutPanel = ({
-  ui: { showCreateWorkoutPanel },
-}: RootState) => showCreateWorkoutPanel;
-
-export const getShowUserPanel = ({ ui: { showUserPanel } }: RootState) =>
-  showUserPanel;
+export const getShowSidebar = ({ ui: { showSidebar } }: RootState) =>
+  showSidebar;
 
 export default uiSlice.reducer;

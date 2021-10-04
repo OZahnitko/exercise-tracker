@@ -1,4 +1,3 @@
-export * from "./BarbellIcon";
-export * from "./CheckIcon";
-export * from "./ChevronDownIcon";
-export * from "./CrossIcon";
+export * from "./HomeIcon";
+export * from "./MenuIcon";
+export * from "./StatsIcon";

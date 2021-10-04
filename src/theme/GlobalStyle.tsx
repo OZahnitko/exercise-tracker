@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
 
     height: 100%;
@@ -21,18 +21,20 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     min-height: 100%;
     min-width: 100%;
-    
+
     padding: 0;
 
     width: 100%;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     margin: 0;
 
     font-family: "Nunito", sans-serif;
     font-weight: 900;
-    
+
     padding: 0;
   }
 `;

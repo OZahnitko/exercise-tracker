@@ -1,17 +1,7 @@
 import styled from "styled-components";
 
-export const ContentSection = styled.div`
-  flex: 1;
-
-  overflow: hidden auto;
-`;
-
 export const Wrapper = styled.div`
-  display: flex;
+  border: 2px solid red;
 
-  flex-direction: column;
-
-  height: 100%;
-
-  overflow: hidden auto;
+  flex: 1;
 `;

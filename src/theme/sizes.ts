@@ -1,13 +1,5 @@
 export const avatarSize = 40;
 
-export const homepageFooterPadding = 10;
+export const mainPadding = 20;
 
-export const homepageHeaderMargins = "10px 20px 0 20px";
-
-export const homepageSearchPadding = "20px 20px 0 20px";
-
-export const homepageSectionMargin = 20;
-
-export const homepageSectionPadding = 10;
-
-export const userPanelPadding = 20;
+export const secondaryPadding = 10;
