@@ -5,8 +5,6 @@ export const InnerWrapper = styled.div`
 
   flex-direction: column;
 
-  overflow: hidden auto;
-
   height: 100%;
 `;
 
