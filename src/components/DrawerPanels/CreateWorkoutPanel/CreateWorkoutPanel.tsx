@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import type { Dispatch, FC, SetStateAction } from "react";
 
+import { NewWorkoutSelectedExercise } from "../..";
 import {
   getExercises,
   getSelectedNewWorkoutExercises,
@@ -17,6 +18,7 @@ import {
   ExerciseListWrapper,
   ExercisePickerWrapper,
   HeadingWrapper,
+  SelectedExercisesWrapper,
   Wrapper,
 } from "./Styles";
 import { fetchExercises } from "../../../utility";
@@ -182,6 +184,11 @@ export const ExercisePicker = () => {
             ))}
         </ExerciseListWrapper>
       )}
+      <SelectedExercisesWrapper>
+        {selectedNewWorkoutExercises.map((exercise) => (
+          <NewWorkoutSelectedExercise exercise={exercise} key={exercise.name} />
+        ))}
+      </SelectedExercisesWrapper>
     </ExercisePickerWrapper>
   );
 };

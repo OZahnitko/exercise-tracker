@@ -85,4 +85,16 @@ export const HeadingWrapper = styled.div`
   text-align: center;
 `;
 
+export const SelectedExercisesWrapper = styled.div`
+  box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.2);
+
+  margin-top: 20px;
+
+  max-height: 300px;
+
+  overflow: hidden auto;
+
+  padding: 20px;
+`;
+
 export const Wrapper = styled.div``;

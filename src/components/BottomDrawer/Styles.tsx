@@ -16,7 +16,6 @@ export const Wrapper = styled.div<WrapperProps>`
 
   opacity: 0;
 
-  padding: ${({ theme }) => theme.sizes.mainPadding}px;
   position: absolute;
 
   transform: translateZ(0);

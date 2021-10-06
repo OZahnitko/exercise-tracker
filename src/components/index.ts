@@ -11,6 +11,8 @@ export * from "./HomepageWorkoutSelector";
 
 export * from "./Icons";
 
+export * from "./NewWorkoutSelectedExercise";
+
 export * from "./Sidebar";
 
 export * from "./TodayActivityCard";
