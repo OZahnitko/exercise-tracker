@@ -13,14 +13,6 @@ import {
 } from "../../store";
 import { Wrapper } from "./Styles";
 
-// const transitionStyles = {
-//   entering: { bottom: 0, opacity: 1, top: 0 },
-//   entered: { bottom: 0, opacity: 1, top: 0 },
-//   exiting: { opacity: 0 },
-//   exited: { opacity: 0, zIndex: -1 },
-//   unmounted: {},
-// };
-
 const AppDrawer = () => {
   const [height, setHeight] = useState<number | undefined>(undefined);
 
