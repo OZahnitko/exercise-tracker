@@ -1,5 +1,3 @@
-import { Homepage } from "./Homepage";
+import { Home } from "./Home";
 
-export * from "./CreateNewWorkoutPage";
-
-export const PAGES = [Homepage];
+export const MAIN_PAGES = [Home];

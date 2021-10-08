@@ -1,11 +1,7 @@
 import { Wrapper } from "./Styles";
 
 const AppHeader = () => {
-  return (
-    <Wrapper>
-      <div>App Header</div>
-    </Wrapper>
-  );
+  return <Wrapper>AppHeader</Wrapper>;
 };
 
 export default AppHeader;

@@ -1,2 +1,2 @@
-export * from "./HomeIcon";
-export * from "./StatsIcon";
+export * from "./JoggingIcon";
+export * from "./SearchIcon";

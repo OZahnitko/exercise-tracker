@@ -4,7 +4,10 @@ import appReducer from "./appSlice";
 import uiReducer from "./uiSlice";
 
 export const store = configureStore({
-  reducer: { app: appReducer, ui: uiReducer },
+  reducer: {
+    app: appReducer,
+    ui: uiReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
 });

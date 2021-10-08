@@ -1,31 +1,28 @@
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import { AppDrawer, AppFooter, AppHeader } from "./components";
-import { useOutsideClickListener } from "./hooks";
-import { PAGES } from "./pages";
-import { AppContentWrapper, RootWrapper } from "./Styles";
+import { AppDrawer } from "./components";
+import { MAIN_PAGES } from "./pages";
+import { ContentSection, RootWrapper } from "./Styles";
 
 const App = () => {
-  useOutsideClickListener();
-
   return (
     <RootWrapper>
-      <AppDrawer.Component />
-      <AppHeader />
-      <AppContentWrapper>
+      <AppDrawer />
+      <div>App Header</div>
+      <ContentSection>
         <Switch>
-          {PAGES.map((page) => (
+          {MAIN_PAGES.map(({ config, Page }) => (
             <Route
-              component={page.Page}
               exact
-              key={page.config.name}
-              path={page.config.path}
+              component={Page}
+              key={config.name}
+              path={config.path}
             />
           ))}
           <Redirect to="/" />
         </Switch>
-      </AppContentWrapper>
-      <AppFooter />
+      </ContentSection>
+      <div>App Footer</div>
     </RootWrapper>
   );
 };

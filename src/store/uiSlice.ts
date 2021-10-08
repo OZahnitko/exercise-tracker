@@ -1,61 +1,35 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from ".";
-import type { DrawerContent, ObservedHtmlElement, UIState } from "../contracts";
+
+import type { DrawerState, UIState } from "../contracts";
 
 const initialState: UIState = {
-  activeAreaWidth: undefined,
-  drawerContent: null,
-  observedHtmlElements: [],
-  showDrawer: false,
+  drawer: {
+    callback: undefined,
+    Content: undefined,
+    direction: undefined,
+    open: false,
+  },
 };
 
 export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    addObservedHtmlElement: (
-      state,
-      { payload }: PayloadAction<ObservedHtmlElement>
-    ) => ({
+    closeDrawer: (state) => ({
       ...state,
-      observedHtmlElements: [...state.observedHtmlElements, payload],
+      drawer: { ...state.drawer, open: false },
     }),
-    removeObservedHtmlElement: (
-      state,
-      { payload }: PayloadAction<ObservedHtmlElement>
-    ) => ({
+    setDrawer: (state, { payload }: PayloadAction<DrawerState>) => ({
       ...state,
-      observedHtmlElements: state.observedHtmlElements.filter(
-        (element) => element.name !== payload.name
-      ),
+      drawer: payload,
     }),
-    setActiveAreaWidth: (state, { payload }: PayloadAction<number>) => ({
-      ...state,
-      activeAreaWidth: payload,
-    }),
-    setDrawerContent: (
-      state,
-      { payload }: PayloadAction<DrawerContent | null>
-    ) => ({ ...state, drawerContent: payload }),
   },
 });
 
-export const {
-  addObservedHtmlElement,
-  setActiveAreaWidth,
-  removeObservedHtmlElement,
-  setDrawerContent,
-} = uiSlice.actions;
+export const { closeDrawer, setDrawer } = uiSlice.actions;
 
-export const getActiveAreaWidth = ({ ui: { activeAreaWidth } }: RootState) =>
-  activeAreaWidth;
-
-export const getDrawerContent = ({ ui: { drawerContent } }: RootState) =>
-  drawerContent;
-
-export const getObservedHtmlElements = ({
-  ui: { observedHtmlElements },
-}: RootState) => observedHtmlElements;
+export const getDrawer = ({ ui: { drawer } }: RootState) => drawer;
 
 export default uiSlice.reducer;

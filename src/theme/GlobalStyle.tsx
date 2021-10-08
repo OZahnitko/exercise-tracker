@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import normalize from "styled-normalize";
 
 export const GlobalStyle = createGlobalStyle`
-  ${normalize}
-
   * {
     box-sizing: border-box;
   }
@@ -36,5 +33,9 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 900;
 
     padding: 0;
+  }
+
+  input {
+    font-family: "Inter", sans-serif;
   }
 `;

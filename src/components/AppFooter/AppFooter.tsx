@@ -1,20 +1,7 @@
-import { IconWrapper, Wrapper } from "./Styles";
-
-import { HomeIcon, StatsIcon } from "..";
+import { Wrapper } from "./Styles";
 
 const AppFooter = () => {
-  return (
-    <Wrapper>
-      <IconWrapper>
-        <HomeIcon />
-      </IconWrapper>
-      <IconWrapper>
-        <StatsIcon />
-      </IconWrapper>
-      <IconWrapper></IconWrapper>
-      <IconWrapper />
-    </Wrapper>
-  );
+  return <Wrapper>AppFooter</Wrapper>;
 };
 
 export default AppFooter;
