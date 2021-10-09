@@ -9,7 +9,7 @@ interface WorkoutAreaChipProps {
 const WorkoutAreaChip = ({ name, onClick, selected }: WorkoutAreaChipProps) => {
   return (
     <Wrapper onClick={() => onClick(name)} selected={selected}>
-      <h3>{name}</h3>
+      <h2>{name}</h2>
     </Wrapper>
   );
 };

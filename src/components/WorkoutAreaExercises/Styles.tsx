@@ -24,7 +24,9 @@ export const ExerciseWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  display: grid;
+  display: flex;
+
+  flex-wrap: wrap;
 
   grid-template-columns: auto auto auto;
 
