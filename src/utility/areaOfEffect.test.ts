@@ -24,6 +24,11 @@ describe("areaOfEffect.reduceUniqueAreasOfEffect", () => {
         name: "Edmond",
         type: ["number", "array", "number", "number", "string"],
       },
+      {
+        aoe: [],
+        name: "Edmond",
+        type: ["number", "array", "number", "number", "string"],
+      },
     ];
     let result: any = areaOfEffect.reduceUniqueAreasOfEffect(param1);
     expect(result).toEqual(["arms", "legs", "shoulders", "upper back"]);
