@@ -1,16 +1,14 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 
 import appReducer from "./appSlice";
-import exercisesReducer from "./exercisesSlice";
-import observedElementsReducer from "./observedElementsSlice";
 import uiReducer from "./uiSlice";
+import workoutReducer from "./workoutSlice";
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
-    exercises: exercisesReducer,
-    observedElements: observedElementsReducer,
     ui: uiReducer,
+    workout: workoutReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

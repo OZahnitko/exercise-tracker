@@ -1,46 +1,47 @@
 import { useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import { CreateWorkoutPanel, Homepage, UserPanel } from "./components";
-import {
-  getShowCreateWorkoutPanel,
-  getShowUserPanel,
-  setInitializingState,
-  useAppDispatch,
-  useAppSelector,
-  useOutsideClickListener,
-} from "./store";
-import { InnerWrapper, RootWrapper } from "./Styles";
+import { AppDrawer } from "./components";
+import { useAppDispatch } from "./hooks";
+import { MAIN_PAGES } from "./pages";
+import { setInitializingState } from "./store";
+import { ContentSection, RootWrapper } from "./Styles";
 import { checkLocalStorage } from "./utility";
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const showCreateWorkoutPanel = useAppSelector(getShowCreateWorkoutPanel);
-  const showUserPanel = useAppSelector(getShowUserPanel);
-
-  useOutsideClickListener();
 
   const checkLocal = async () => {
-    dispatch(setInitializingState(true));
-
     await checkLocalStorage();
-
-    dispatch(setInitializingState(false));
   };
 
   useEffect(() => {
+    dispatch(setInitializingState(true));
+
     checkLocal();
+
+    dispatch(setInitializingState(false));
   }, []);
 
   return (
-    <>
-      <RootWrapper>
-        <InnerWrapper>
-          {showUserPanel && <UserPanel />}
-          {showCreateWorkoutPanel && <CreateWorkoutPanel />}
-          <Homepage />
-        </InnerWrapper>
-      </RootWrapper>
-    </>
+    <RootWrapper>
+      <AppDrawer />
+      <div>App Header</div>
+      <ContentSection>
+        <Switch>
+          {MAIN_PAGES.map(({ config, Page }) => (
+            <Route
+              exact
+              component={Page}
+              key={config.name}
+              path={config.path}
+            />
+          ))}
+          <Redirect to="/" />
+        </Switch>
+      </ContentSection>
+      <div>App Footer</div>
+    </RootWrapper>
   );
 };
 

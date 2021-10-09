@@ -1,62 +1,35 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { RootState } from ".";
 
-interface UIState {
-  selectedHomepageSection: HTMLDivElement | null;
-  showCalendar: boolean;
-  showCreateWorkoutPanel: boolean;
-  showUserPanel: boolean;
-}
+import type { DrawerState, UIState } from "../contracts";
 
 const initialState: UIState = {
-  selectedHomepageSection: null,
-  showCalendar: false,
-  showCreateWorkoutPanel: false,
-  showUserPanel: false,
+  drawer: {
+    callback: undefined,
+    Content: undefined,
+    direction: undefined,
+    open: false,
+  },
 };
 
 export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    setSelectedHomepageSection: (
-      state,
-      { payload }: PayloadAction<HTMLDivElement>
-    ) => ({ ...state, selectedHomepageSection: payload }),
-    setShowCalendar: (state, { payload }: PayloadAction<boolean>) => ({
+    closeDrawer: (state) => ({
       ...state,
-      showCalendar: payload,
+      drawer: { ...state.drawer, open: false },
     }),
-    setShowCreateWorkoutPanel: (
-      state,
-      { payload }: PayloadAction<boolean>
-    ) => ({ ...state, showCreateWorkoutPanel: payload }),
-    setShowUserPanel: (state, { payload }: PayloadAction<boolean>) => ({
+    setDrawer: (state, { payload }: PayloadAction<DrawerState>) => ({
       ...state,
-      showUserPanel: payload,
+      drawer: payload,
     }),
   },
 });
 
-export const {
-  setSelectedHomepageSection,
-  setShowCalendar,
-  setShowCreateWorkoutPanel,
-  setShowUserPanel,
-} = uiSlice.actions;
+export const { closeDrawer, setDrawer } = uiSlice.actions;
 
-export const getSelectedHomepageSection = ({
-  ui: { selectedHomepageSection },
-}: RootState) => selectedHomepageSection;
-
-export const getShowCalendar = ({ ui: { showCalendar } }: RootState) =>
-  showCalendar;
-
-export const getShowCreateWorkoutPanel = ({
-  ui: { showCreateWorkoutPanel },
-}: RootState) => showCreateWorkoutPanel;
-
-export const getShowUserPanel = ({ ui: { showUserPanel } }: RootState) =>
-  showUserPanel;
+export const getDrawer = ({ ui: { drawer } }: RootState) => drawer;
 
 export default uiSlice.reducer;

@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
-export const InnerWrapper = styled.div`
-  overflow: hidden auto;
+export const ContentSection = styled.div`
+  flex: 1;
 
-  height: 100%;
+  overflow: hidden auto;
 `;
 
 export const RootWrapper = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
   height: 100%;
 
-  position: relative;
-`;
+  overflow: hidden;
 
-export const TextFieldWrapper = styled.div`
-  padding: 0.5rem;
+  position: relative;
 `;

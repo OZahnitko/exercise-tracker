@@ -10,7 +10,6 @@ export const checkLocalStorage = async () => {
   if (!localData) {
     await storeData(data);
   } else {
-    //  Need to check if the local date is of the latest version.
     if (
       DateTime.fromISO(localData.lastUpdatedOn) <
       DateTime.fromISO(data.lastUpdatedOn)
