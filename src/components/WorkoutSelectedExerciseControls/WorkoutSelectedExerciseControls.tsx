@@ -29,7 +29,12 @@ const ResistanceExerciseControls = () => {
       <ControlsContainer>
         <h3>Weight</h3>
         <ControlsWrapper>
-          <div style={{ marginRight: "12px" }}>
+          <div
+            onClick={() => {
+              console.log("minus");
+            }}
+            style={{ marginRight: "12px" }}
+          >
             <h2>-</h2>
           </div>
           <div style={{ marginRight: "12px" }}>
