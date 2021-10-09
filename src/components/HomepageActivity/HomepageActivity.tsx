@@ -1,8 +1,9 @@
 import { DateTime } from "luxon";
+import ReactSwipe from "react-swipe";
 
 import { JoggingIcon } from "..";
 import { useAppSelector } from "../../hooks";
-import { getCurrentDate } from "../../store";
+import { getSelectedDate } from "../../store";
 import {
   ContentWrapper,
   HeadingWrapper,
@@ -13,27 +14,33 @@ import {
 } from "./Styles";
 
 const HomepageActivity = () => {
-  const currentDate = useAppSelector(getCurrentDate);
+  const selectedDate = useAppSelector(getSelectedDate);
 
   return (
-    <Wrapper>
-      <ContentWrapper>
-        <InformationWrapper>
-          <HeadingWrapper>
-            Activity for{" "}
-            {DateTime.fromISO(currentDate).toLocaleString({
-              weekday: "short",
-              month: "short",
-              day: "numeric",
-            })}
-          </HeadingWrapper>
-          <SummaryWrapper>No Activity for Today</SummaryWrapper>
-        </InformationWrapper>
-        <IconWrapper>
-          <JoggingIcon />
-        </IconWrapper>
-      </ContentWrapper>
-    </Wrapper>
+    <ReactSwipe
+      swipeOptions={{
+        continuous: false,
+      }}
+    >
+      <Wrapper>
+        <ContentWrapper>
+          <InformationWrapper>
+            <HeadingWrapper>
+              Activity for{" "}
+              {DateTime.fromISO(selectedDate).toLocaleString({
+                weekday: "short",
+                month: "short",
+                day: "numeric",
+              })}
+            </HeadingWrapper>
+            <SummaryWrapper>No Activity for Today</SummaryWrapper>
+          </InformationWrapper>
+          <IconWrapper>
+            <JoggingIcon />
+          </IconWrapper>
+        </ContentWrapper>
+      </Wrapper>
+    </ReactSwipe>
   );
 };
 

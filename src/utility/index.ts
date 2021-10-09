@@ -1,2 +1,2 @@
+export * from "./areaOfEffect";
 export * from "./localStorage";
-export * from "./store";

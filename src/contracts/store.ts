@@ -1,12 +1,10 @@
+import type { Exercise } from "./localStorage";
+
 export interface AppState {
   currentDate: string;
   initializing: boolean;
   searchString: string;
-  selectedDate: string | undefined;
-}
-
-export interface UIState {
-  drawer: DrawerState;
+  selectedDate: string;
 }
 
 export interface DrawerState {
@@ -14,6 +12,13 @@ export interface DrawerState {
   Content: (() => JSX.Element) | undefined;
   direction: AppDrawerDirection | undefined;
   open: boolean;
+}
+export interface UIState {
+  drawer: DrawerState;
+}
+
+export interface WorkoutState {
+  selectedExercises: Exercise[];
 }
 
 export enum AppDrawerDirection {

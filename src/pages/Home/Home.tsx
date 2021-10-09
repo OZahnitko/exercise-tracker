@@ -1,4 +1,8 @@
-import { HomepageActivity, HomepageSearch } from "../../components";
+import {
+  HomepageActivity,
+  HomepageSearch,
+  HomepageWorkoutSelector,
+} from "../../components";
 import { Wrapper } from "./Styles";
 
 const Home = () => {
@@ -6,6 +10,7 @@ const Home = () => {
     <Wrapper>
       <HomepageSearch />
       <HomepageActivity />
+      <HomepageWorkoutSelector />
     </Wrapper>
   );
 };

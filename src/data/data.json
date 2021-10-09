@@ -1,0 +1,39 @@
+{
+  "exercises": [
+    {
+      "aoe": ["legs", "lower back"],
+      "name": "Dead Lift",
+      "type": ["resistance"]
+    },
+    { "aoe": ["shoulders"], "name": "shoulder press", "type": ["resistance"] },
+    { "aoe": ["legs"], "name": "squat", "type": ["resistance"] },
+    {
+      "aoe": ["upper back", "lower back"],
+      "name": "machine back pull",
+      "type": ["resistance"]
+    },
+    { "aoe": ["legs"], "name": "leg press", "type": ["resistance"] },
+    { "aoe": ["chest"], "name": "barbell bench press", "type": ["resistance"] },
+    {
+      "aoe": ["chest"],
+      "name": "dumbbell bench press",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["chest"],
+      "name": "smith machine incline press",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["chest"],
+      "name": "incline dumbbell flye",
+      "type": ["resistance"]
+    },
+    {
+      "aoe": ["arms"],
+      "name": "Bicep Curl",
+      "type": ["resistance"]
+    }
+  ],
+  "lastUpdatedOn": "2021-10-09T18:16:12.000+10:00"
+}

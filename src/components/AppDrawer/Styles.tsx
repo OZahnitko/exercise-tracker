@@ -12,7 +12,15 @@ export const StyledDrawer = styled<FC<StyledDrawerProps>>(Drawer).attrs(() => ({
   BackdropProps: { invisible: true },
 }))`
   .MuiDrawer-paper {
-    color: red;
+    border-radius: ${(props) =>
+      props.direction === AppDrawerDirection.left
+        ? "0 15px 15px 0"
+        : props.direction === AppDrawerDirection.top
+        ? "0 0 15px 15px"
+        : "15px 15px 0 0"};
+
+    max-height: ${(props) =>
+      props.direction === AppDrawerDirection.bottom ? 75 : 100}%;
 
     max-width: ${(props) =>
       props.direction === AppDrawerDirection.left ? 75 : 100}%;
