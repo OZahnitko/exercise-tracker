@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-import { ChevronIcon, CrossIcon, ResistanceIcon } from "..";
+import {
+  ChevronIcon,
+  CrossIcon,
+  ResistanceIcon,
+  WorkoutSelectedExerciseControls,
+} from "..";
 import { Exercise } from "../../contracts";
 import { useWorkoutHooks } from "../../hooks";
 import {
@@ -17,6 +22,20 @@ import {
 interface SelectedExerciseProps {
   exercise: Exercise;
 }
+
+const WorkoutSelectedExercises = () => {
+  const { selectedExercises } = useWorkoutHooks();
+
+  return (
+    <Wrapper>
+      {selectedExercises.map((exercise) => (
+        <SelectedExercise exercise={exercise} key={exercise.name} />
+      ))}
+    </Wrapper>
+  );
+};
+
+export default WorkoutSelectedExercises;
 
 const SelectedExercise = ({ exercise }: SelectedExerciseProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -41,21 +60,11 @@ const SelectedExercise = ({ exercise }: SelectedExerciseProps) => {
           </IconContainer>
         </ControlsContainer>
       </HeaderWrapper>
-      {expanded && <ExpandedContentWrapper>Hello</ExpandedContentWrapper>}
+      {expanded && (
+        <ExpandedContentWrapper>
+          <WorkoutSelectedExerciseControls exercise={exercise} />
+        </ExpandedContentWrapper>
+      )}
     </SelectedExerciseWrapper>
   );
 };
-
-const WorkoutSelectedExercises = () => {
-  const { selectedExercises } = useWorkoutHooks();
-
-  return (
-    <Wrapper>
-      {selectedExercises.map((exercise) => (
-        <SelectedExercise exercise={exercise} key={exercise.name} />
-      ))}
-    </Wrapper>
-  );
-};
-
-export default WorkoutSelectedExercises;

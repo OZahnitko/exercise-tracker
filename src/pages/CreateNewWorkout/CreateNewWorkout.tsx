@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
+import { CrossIconTypes } from "../../components/Icons/CrossIcon/CrossIcon";
 import { Status } from "../../components/Icons/TrashIcon/TrashIcon";
 
 import {
+  CrossIcon,
   TrashIcon,
   WorkoutAreaPicker,
   WorkoutAreaExercises,
@@ -10,7 +12,12 @@ import {
 } from "../../components";
 import { Exercise } from "../../contracts";
 
-import { useAppDispatch, useAppSelector, useWorkoutHooks } from "../../hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useUIHooks,
+  useWorkoutHooks,
+} from "../../hooks";
 import { addSelectedExercise, getSelectedExercises } from "../../store";
 import {
   ExerciseListWrapper,
@@ -30,6 +37,7 @@ const CreateNewWorkout = () => {
 
   const staticWrapperRef = useRef<HTMLDivElement | null>(null);
 
+  const { closeDrawer } = useUIHooks();
   const { clearSelectedExercises } = useWorkoutHooks();
 
   const handleAddSelectedExercise = (exercise: Exercise) =>
@@ -49,12 +57,18 @@ const CreateNewWorkout = () => {
       <div ref={staticWrapperRef}>
         <HeadingWrapper>
           <h3>Create New Workout</h3>
-          <HeadingIconWrapper onClick={clearSelectedExercises}>
-            <TrashIcon
-              status={
-                selectedExercises.length ? Status.active : Status.inactive
-              }
-            />
+          <HeadingIconWrapper
+            onClick={
+              selectedExercises.length
+                ? clearSelectedExercises
+                : () => closeDrawer()
+            }
+          >
+            {selectedExercises.length ? (
+              <TrashIcon status={Status.active} />
+            ) : (
+              <CrossIcon type={CrossIconTypes.urgent} />
+            )}
           </HeadingIconWrapper>
         </HeadingWrapper>
         <WorkoutAreaPicker

@@ -31,9 +31,10 @@
     },
     {
       "aoe": ["arms"],
+      "defaultWeight": 16,
       "name": "Bicep Curl",
       "type": ["resistance"]
     }
   ],
-  "lastUpdatedOn": "2021-10-09T18:16:12.000+10:00"
+  "lastUpdatedOn": "2021-10-09T21:55:12.000+10:00"
 }

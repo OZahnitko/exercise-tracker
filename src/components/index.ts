@@ -13,4 +13,5 @@ export * from "./Icons";
 export * from "./WorkoutAreaChip";
 export * from "./WorkoutAreaExercises";
 export * from "./WorkoutAreaPicker";
+export * from "./WorkoutSelectedExerciseControls";
 export * from "./WorkoutSelectedExercises";

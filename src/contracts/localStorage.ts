@@ -6,4 +6,5 @@ export interface Data {
 export interface Exercise {
   aoe: string[];
   name: string;
+  type: string[];
 }
