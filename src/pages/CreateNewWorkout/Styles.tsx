@@ -18,7 +18,7 @@ export const ExerciseListWrapper = styled.div<ExerciseListWrapperProps>`
   margin: ${(props) => (props.empty ? "0" : "0 20px 20px 20px")};
 
   max-height: ${(props) =>
-    (window.innerHeight * 0.75 - props.staticWrapperHeight) / 2.2}px;
+    (window.innerHeight - props.staticWrapperHeight) / 2.2}px;
 `;
 
 export const HeadingIconWrapper = styled.div`
@@ -43,7 +43,7 @@ export const SelectedExercisesWrapper = styled.div<DynamicWrapperProps>`
   box-shadow: 0 -0.25px 8.25px 0 rgba(0, 0, 0, 0.5);
 
   max-height: ${(props) =>
-    (window.innerHeight * 0.75 - props.staticWrapperHeight) / 2.2}px;
+    (window.innerHeight - props.staticWrapperHeight) / 2.2}px;
 
   overflow: hidden auto;
 
