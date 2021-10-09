@@ -1,4 +1,13 @@
-const CrossIcon = () => {
+export enum CrossIconTypes {
+  normal = "normal",
+  urgent = "urgent",
+}
+
+interface CrossIconProps {
+  type?: CrossIconTypes;
+}
+
+const CrossIcon = ({ type = CrossIconTypes.normal }: CrossIconProps) => {
   return (
     <svg
       width="25"
@@ -9,7 +18,7 @@ const CrossIcon = () => {
     >
       <path
         d="M6.91615 18L18.9521 6M6.91615 6L18.9521 18"
-        stroke="#111827"
+        stroke={type === CrossIconTypes.urgent ? "red" : "#111827"}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
