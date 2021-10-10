@@ -1,6 +1,12 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-import { CrossIcon, TrashIcon } from "../../components";
+import {
+  ArrowIcon,
+  ArrowIconDirection,
+  CircleCheckIcon,
+  CrossIcon,
+  TrashIcon,
+} from "../../components";
 import { CrossIconTypes } from "../../components/Icons/CrossIcon/CrossIcon";
 import { Status } from "../../components/Icons/TrashIcon/TrashIcon";
 import type { Exercise } from "../../contracts";
@@ -14,11 +20,15 @@ import {
   HeadingControlsContainer,
   HeadingTextContainer,
   IconContainer,
+  NewWorkoutEditorWrapper,
   Wrapper,
 } from "./Styles";
 import { fetchExercises, reduceUniqueAreasOfEffect } from "../../utility";
 
 const NewWorkout = () => {
+  const [stepOne, setStepOne] = useState<boolean>(true);
+  const [stepTwo, setStepTwo] = useState<boolean>(false);
+
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [exerciseAreas, setExerciseAreas] = useState<string[]>([]);
   const [selectedExerciseArea, setSelectedExerciseArea] = useState<
@@ -47,17 +57,52 @@ const NewWorkout = () => {
     if (exerciseAreas.length) setSelectedExerciseArea(() => exerciseAreas[0]);
   }, [exerciseAreas]);
 
+  useEffect(() => {
+    if (!selectedExercises.length) setStepOne(() => true);
+  }, [selectedExercises]);
+
+  useEffect(() => {
+    if (stepOne) setStepTwo(() => false);
+  }, [stepOne]);
+
+  useEffect(() => {
+    if (stepTwo) setStepOne(() => false);
+  }, [stepTwo]);
+
   return (
     <Wrapper>
       <HeaderWrapper>
         <HeadingTextContainer>
-          <h3>Create New Workout</h3>
+          <h3>
+            {stepOne ? "Pick Workout Exercises" : "Edit Selected Exercises"}
+          </h3>
         </HeadingTextContainer>
         <HeadingControlsContainer>
           {selectedExercises.length ? (
-            <IconContainer onClick={clearSelectedExercises}>
-              <TrashIcon status={Status.active} />
-            </IconContainer>
+            <>
+              {stepOne ? (
+                <IconContainer onClick={clearSelectedExercises}>
+                  <TrashIcon status={Status.active} />
+                </IconContainer>
+              ) : (
+                <IconContainer>
+                  <CircleCheckIcon />
+                </IconContainer>
+              )}
+              <IconContainer
+                onClick={
+                  stepOne
+                    ? () => setStepTwo(() => true)
+                    : () => setStepOne(() => true)
+                }
+              >
+                <ArrowIcon
+                  direction={
+                    stepOne ? ArrowIconDirection.right : ArrowIconDirection.left
+                  }
+                />
+              </IconContainer>
+            </>
           ) : (
             <IconContainer onClick={closeDrawer}>
               <CrossIcon type={CrossIconTypes.urgent} />
@@ -65,31 +110,39 @@ const NewWorkout = () => {
           )}
         </HeadingControlsContainer>
       </HeaderWrapper>
-      <ExerciseAreaContainer>
-        {exerciseAreas.map((area) => (
-          <ExerciseAreaChip
-            area={area}
-            key={area}
-            onSelect={setSelectedExerciseArea}
-            selected={selectedExerciseArea === area}
-          />
-        ))}
-      </ExerciseAreaContainer>
-      <ExerciseListContainer>
-        {exercises
-          .filter((exercise) => exercise.aoe.includes(selectedExerciseArea!))
-          .map((exercise) => (
-            <ExerciseCard
-              key={exercise.name}
-              exercise={exercise}
-              selected={
-                !!selectedExercises.find(
-                  (selectedExercise) => selectedExercise.name === exercise.name
-                )
-              }
-            />
-          ))}
-      </ExerciseListContainer>
+      {stepOne && (
+        <>
+          <ExerciseAreaContainer>
+            {exerciseAreas.map((area) => (
+              <ExerciseAreaChip
+                area={area}
+                key={area}
+                onSelect={setSelectedExerciseArea}
+                selected={selectedExerciseArea === area}
+              />
+            ))}
+          </ExerciseAreaContainer>
+          <ExerciseListContainer>
+            {exercises
+              .filter((exercise) =>
+                exercise.aoe.includes(selectedExerciseArea!)
+              )
+              .map((exercise) => (
+                <ExerciseCard
+                  key={exercise.name}
+                  exercise={exercise}
+                  selected={
+                    !!selectedExercises.find(
+                      (selectedExercise) =>
+                        selectedExercise.name === exercise.name
+                    )
+                  }
+                />
+              ))}
+          </ExerciseListContainer>
+        </>
+      )}
+      {stepTwo && <NewWorkoutEditor />}
     </Wrapper>
   );
 };
@@ -136,5 +189,15 @@ export const ExerciseCard = ({ exercise, selected }: ExerciseCardProps) => {
     >
       {exercise.name}
     </ExerciseCardWrapper>
+  );
+};
+
+const NewWorkoutEditor = () => {
+  const { selectedExercises } = useWorkoutHooks();
+
+  return (
+    <NewWorkoutEditorWrapper>
+      <pre>{JSON.stringify({ selectedExercises }, null, 2)}</pre>
+    </NewWorkoutEditorWrapper>
   );
 };

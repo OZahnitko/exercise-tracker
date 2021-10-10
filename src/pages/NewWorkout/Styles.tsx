@@ -84,6 +84,8 @@ export const ExerciseListContainer = styled.div`
 
   gap: 12px;
 
+  overflow: hidden auto;
+
   padding: 0 20px 20px 20px;
 `;
 
@@ -114,4 +116,17 @@ export const ExerciseCardWrapper = styled.div<ExerciseCardWrapperProps>`
   text-align: center;
 
   width: ${() => (window.innerWidth - 64) / 3}px;
+`;
+
+// New Workout Editor
+export const NewWorkoutEditorWrapper = styled.div`
+  border: 1px solid red;
+
+  flex: 1;
+
+  margin-top: 20px;
+
+  overflow: hidden auto;
+
+  padding: 0 20px 20px 20px;
 `;
