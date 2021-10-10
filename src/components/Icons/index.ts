@@ -1,4 +1,6 @@
-export * from "./ChevronIcon";
+export * from "./ArrowIcon";
+
+export * from "./CircleCheckIcon";
 export * from "./CrossIcon";
 
 export * from "./JoggingIcon";

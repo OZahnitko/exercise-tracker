@@ -19,7 +19,7 @@ export const StyledDrawer = styled<FC<StyledDrawerProps>>(Drawer).attrs(() => ({
         ? "0 0 15px 15px"
         : "15px 15px 0 0"};
 
-    height: 100%;
+    height: 75%;
   }
 `;
 
