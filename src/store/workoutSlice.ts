@@ -11,10 +11,18 @@ export const workoutSlice = createSlice({
   name: "workout",
   initialState,
   reducers: {
-    addSelectedExercise: (state, { payload }: PayloadAction<Exercise>) => ({
-      ...state,
-      selectedExercises: [...state.selectedExercises, payload],
-    }),
+    addSelectedExercise: (state, { payload }: PayloadAction<Exercise>) => {
+      if (
+        !state.selectedExercises.find(
+          (exercise) => exercise.name === payload.name
+        )
+      ) {
+        return {
+          ...state,
+          selectedExercises: [...state.selectedExercises, payload],
+        };
+      } else return state;
+    },
     clearSelectedExercises: (state) => ({ ...state, selectedExercises: [] }),
     removeSelectedExercise: (state, { payload }: PayloadAction<Exercise>) => ({
       ...state,

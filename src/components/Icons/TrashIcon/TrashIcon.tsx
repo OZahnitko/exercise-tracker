@@ -4,7 +4,7 @@ export enum Status {
 }
 
 interface TrashIconProps {
-  status: Status;
+  status?: Status;
 }
 
 const TrashIcon = ({ status }: TrashIconProps) => {

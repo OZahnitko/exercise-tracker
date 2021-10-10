@@ -3,6 +3,8 @@ import { useAppDispatch } from "../../hooks";
 import { closeDrawer, setDrawer } from "../../store";
 import { HeadingContainer, Wrapper } from "./Styles";
 
+import { NewWorkout } from "../../pages";
+
 const HomepageWorkoutSelectorCardNew = () => {
   const dispatch = useAppDispatch();
 
@@ -12,7 +14,7 @@ const HomepageWorkoutSelectorCardNew = () => {
         dispatch(
           setDrawer({
             callback: () => dispatch(closeDrawer()),
-            Content: TempDrawer,
+            Content: NewWorkout,
             direction: AppDrawerDirection.bottom,
             open: true,
           })
@@ -27,7 +29,3 @@ const HomepageWorkoutSelectorCardNew = () => {
 };
 
 export default HomepageWorkoutSelectorCardNew;
-
-const TempDrawer = () => {
-  return <div>Temp</div>;
-};
