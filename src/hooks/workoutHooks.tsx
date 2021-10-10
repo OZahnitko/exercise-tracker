@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from ".";
 import { Exercise } from "../contracts";
 import {
+  addSelectedExercise,
   clearSelectedExercises,
   getSelectedExercises,
   removeSelectedExercise,
@@ -10,6 +11,8 @@ export const useWorkoutHooks = () => {
   const dispatch = useAppDispatch();
 
   return {
+    addSelectedExercise: (exercise: Exercise) =>
+      dispatch(addSelectedExercise(exercise)),
     clearSelectedExercises: () => dispatch(clearSelectedExercises()),
     removeSelectedExercise: (exercise: Exercise) =>
       dispatch(removeSelectedExercise(exercise)),
