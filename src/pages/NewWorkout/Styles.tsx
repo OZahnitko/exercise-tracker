@@ -17,14 +17,18 @@ export const HeadingControlsContainer = styled.div`
 
 export const HeadingTextContainer = styled.div``;
 
-export const IconContainer = styled.div`
+interface IconContainerProps {
+  onlyChild?: boolean;
+}
+
+export const IconContainer = styled.div<IconContainerProps>`
   align-items: center;
 
   display: flex;
 
   justify-content: center;
 
-  margin-right: 12px;
+  margin-right: ${(props) => (props.onlyChild ? 6 : 12)}px;
 
   :last-child {
     margin-right: 0;
@@ -148,7 +152,7 @@ export const ExpandedControls = styled.div`
 `;
 
 export const InformationContainer = styled.div`
-  border: 1px solid blue;
+  display: flex;
 `;
 
 export const PermanentContainer = styled.div`

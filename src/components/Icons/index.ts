@@ -2,6 +2,7 @@ export * from "./ArrowIcon";
 
 export * from "./ChevronIcon";
 export * from "./CircleCheckIcon";
+export * from "./CircleCrossIcon";
 export * from "./CrossIcon";
 
 export * from "./JoggingIcon";

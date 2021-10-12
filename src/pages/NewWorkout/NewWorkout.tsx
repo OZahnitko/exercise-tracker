@@ -5,9 +5,11 @@ import {
   ArrowIconDirection,
   ChevronIcon,
   CircleCheckIcon,
+  CircleCrossIcon,
   CrossIcon,
   MinusCircleIcon,
   PlusCircleIcon,
+  ResistanceIcon,
   TrashIcon,
 } from "../../components";
 import { CrossIconTypes } from "../../components/Icons/CrossIcon/CrossIcon";
@@ -273,6 +275,9 @@ export const SelectedExerciseCard = ({
     <SelectedExerciseCardWrapper>
       <PermanentContainer>
         <InformationContainer>
+          <IconContainer onlyChild>
+            <ResistanceIcon />
+          </IconContainer>
           <h3>{exercise.name}</h3>
         </InformationContainer>
         <ControlsContainer>
@@ -285,7 +290,7 @@ export const SelectedExerciseCard = ({
             </IconContainer>
           ) : (
             <IconContainer onClick={() => removeSelectedExercise(exercise)}>
-              <CrossIcon />
+              <CircleCrossIcon />
             </IconContainer>
           )}
         </ControlsContainer>
