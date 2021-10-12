@@ -22,6 +22,8 @@ export const IconContainer = styled.div`
 
   display: flex;
 
+  justify-content: center;
+
   margin-right: 12px;
 
   :last-child {
@@ -40,12 +42,13 @@ export const Wrapper = styled.div`
 // Exercise Area
 
 interface ExerciseAreaChipWrapperProps {
+  included: boolean;
   selected: boolean;
 }
 
 export const ExerciseAreaChipWrapper = styled.div<ExerciseAreaChipWrapperProps>`
   background-color: #f8e1d2;
-  border: 2px solid #${(props) => (props.selected ? "fa7b34" : "f8e1d2")};
+  border: 2px solid #${(props) => (props.selected ? "fa7b34" : props.included ? "00a600" : "f8e1d2")};
   border-radius: 5px;
 
   margin-right: 12px;
@@ -119,14 +122,78 @@ export const ExerciseCardWrapper = styled.div<ExerciseCardWrapperProps>`
 `;
 
 // New Workout Editor
+
 export const NewWorkoutEditorWrapper = styled.div`
-  border: 1px solid red;
-
   flex: 1;
-
-  margin-top: 20px;
 
   overflow: hidden auto;
 
-  padding: 0 20px 20px 20px;
+  margin: 12px 20px 20px 20px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+// Selected Exercise Card
+
+export const ControlsContainer = styled.div`
+  display: flex;
+`;
+
+export const ExpandedControls = styled.div`
+  font-weight: bold;
+
+  margin-top: 12px;
+`;
+
+export const InformationContainer = styled.div`
+  border: 1px solid blue;
+`;
+
+export const PermanentContainer = styled.div`
+  align-items: center;
+
+  display: flex;
+
+  justify-content: space-between;
+`;
+
+export const SelectedExerciseCardWrapper = styled.div`
+  background-color: #ddf2ff;
+  border-radius: 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+
+  padding: 12px;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+`;
+
+// Resistance Exercise Controls
+
+export const ResistanceExerciseControlsContainer = styled.div`
+  align-items: center;
+
+  display: flex;
+
+  justify-content: space-between;
+`;
+
+export const ResistanceExerciseControlsWrapper = styled.div``;
+
+export const RowContainer = styled.div`
+  align-items: center;
+
+  display: flex;
+
+  justify-content: space-between;
 `;
